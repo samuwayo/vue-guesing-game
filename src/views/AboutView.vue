@@ -1,6 +1,9 @@
 <template>
   <div class="about">
-   <nav class="gamenav">
+    
+    
+    <div id="game" :style="{ display: isActive}"></div>
+    <nav class="gamenav">
     <div class="logo">
       <img src="../assets/logo (2).png" class="logo" alt="">
     </div>
@@ -21,7 +24,7 @@
    </div><br>
 
    
- <div class="btns">
+ <div class="btns" style="display: flex">
    <div v-for="btn in buttons" :key="btn.text" :class="btn.class">
     
     <router-link to="/about"><button v-on:click="guessing( btn.text )">{{ btn.text }}</button></router-link>
@@ -42,10 +45,20 @@
    <script setup>
 
 import { ref } from 'vue';
- 
+
+let isActive = ref('block');
+
+// set load time
+
+setTimeout(()=>{
+  isActive.value = "none";
+}, 3000);
+
+
+
    let win=ref(0);
   let loss = ref(0);
-  
+    
 let screat= ref(null);
     
      
@@ -74,6 +87,7 @@ let screat= ref(null);
        const buttons = [
        {
           text:0,
+        
           class:"btn",
         },
         {
@@ -204,7 +218,7 @@ let screat= ref(null);
       animation: color infinite 1s;
        
    
-    }
+    }ss
    .btns{
     display: flex;
     flex-wrap: wrap;
@@ -245,10 +259,20 @@ let screat= ref(null);
     }
     }
     
-
+/* loading styles */
    
-   
-   
+    #game{
+  
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+background-image: url('../assets/loading.gif');
+}
+.none{
+  diplay: none;
+}   
    
    
    

@@ -1,4 +1,6 @@
 <template>
+<div id="game" :style="{ display: isActive}"></div>
+  
    <nav>
       
       <img src="../assets/logo (2).png" class="logo" alt="">
@@ -18,11 +20,23 @@
       </div>
     </div>
   </div>
-  <router-link to="/about"><button>start</button></router-link>
+  <router-link to="/about"><button>start      <i class="fa fa-play" aria-hidden="true"></i></button></router-link>
   
 </template>
 
 <script setup>
+
+
+import { ref } from 'vue';
+
+let isActive = ref('block');
+
+// set load time
+
+setTimeout(()=>{
+  isActive.value = "none";
+}, 5000);
+
  const levels = [
   {
     level: "level 1",
@@ -68,11 +82,10 @@
   color: #ef660b;
   justify-content: center;
   display: block;
-  transform: skew(15deg, 15deg);;
-}
+  }
 span{
 margin-top: 30px;
-}
+  }
 button{
   background-image: url('../assets/background.jpg');
   width: 200px;
@@ -88,4 +101,29 @@ button{
   margin-top: 50px;
 
 }
+
+
+
+
+/* loading styles */
+   
+#game{
+  
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+background-image: url('../assets/loading.gif');
+}
+.none{
+  diplay: none;
+}   
+   
+   
+
+
+
+
+
 </style>
