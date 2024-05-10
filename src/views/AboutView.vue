@@ -261,7 +261,7 @@ let screat= ref(null);
     
 /* loading styles */
    
-    #game{
+#game{
   
   background-repeat: no-repeat;
   width: 100vw;
